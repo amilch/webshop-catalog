@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('component_product', function (Blueprint $table) {
+        Schema::create('attribute_value_variant', function (Blueprint $table) {
             $table->id();
-            $table->integer('component_id');
-            $table->integer('product_id');
             $table->timestamps();
+            $table->integer('attribute_value_id');
+            $table->integer('variant_id');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('component_product');
+        Schema::dropIfExists('attribute_value_variant');
     }
 };

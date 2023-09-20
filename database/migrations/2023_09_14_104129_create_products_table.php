@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->integer('product_type_id');
+            $table->integer('category_id');
             $table->boolean('visible');
             $table->string('name');
-            $table->integer('shipping_weight')->nullable();
-            $table->integer('shipping_width')->nullable();
-            $table->integer('shipping_height')->nullable();
-            $table->integer('shipping_depth')->nullable();
-            $table->decimal('price', 9,2);
-            $table->integer('category_id');
+            $table->string('description')->nullable();
             $table->timestamps();
+            $table->decimal('default_price', 9,2)->nullable();
+            $table->integer('default_weight')->nullable();
             // $table->integer('sort_position');
         });
     }
