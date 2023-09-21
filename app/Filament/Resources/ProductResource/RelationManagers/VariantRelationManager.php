@@ -3,14 +3,11 @@
 namespace App\Filament\Resources\ProductResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class VariantRelationManager extends RelationManager
 {
@@ -20,6 +17,8 @@ class VariantRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->required(),
                 Forms\Components\TextInput::make('sku')
                     ->required()
                     ->maxLength(255),
@@ -30,18 +29,7 @@ class VariantRelationManager extends RelationManager
                 Forms\Components\TextInput::make('weight')
                     ->numeric()
                     ->prefix('g')
-                    ->placeholder(fn (?Model $record) => $record?->product->default_weight),
-                Select::make('attributeValues')
-                    ->multiple()
-                    ->preload()
-                    ->relationship(
-                        name: 'attributeValues',
-                        titleAttribute: 'value',
-                        modifyQueryUsing: fn (Builder $query) =>
-                            $query->whereHas('attribute', fn (Builder $q) =>
-                                $q->where('use_as_variant', true)
-                            )
-                        ),
+                    ->placeholder(fn (?Model $record) => $record?->product->default_weight)
             ]);
     }
 
@@ -51,6 +39,9 @@ class VariantRelationManager extends RelationManager
             ->recordTitleAttribute('sku')
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('sku')

@@ -17,9 +17,4 @@ class Variant extends Model implements HasMedia
     {
         return $this->belongsTo(Product::class);
     }
-
-    public function attributeValues(): BelongsToMany
-    {
-        return $this->belongsToMany(AttributeValue::class);
-    }
 }

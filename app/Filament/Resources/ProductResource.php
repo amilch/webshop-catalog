@@ -35,12 +35,7 @@ class ProductResource extends Resource
             ->schema([
                 Toggle::make('visible')
                     ->default(true)
-                    ->required()
-                    ->columnSpanFull(),
-                Select::make('product_type_id')
-                    ->relationship('productType', 'name')
-                    ->required()
-                    ->disabledOn('edit'),
+                    ->required(),
                 Select::make('category_id')
                     ->relationship('category', 'name')
                     ->searchable()
@@ -60,20 +55,7 @@ class ProductResource extends Resource
                 Forms\Components\SpatieMediaLibraryFileUpload::make('images')
                     ->multiple()
                     ->reorderable()
-                    ->columnSpanFull(),
-                Forms\Components\Section::make('Attributes')
-                    ->hiddenOn('create')
-                    ->schema(fn (?Model $record, String $operation) =>
-                        $operation == 'create' ? [] :
-                            $record->productType->attributes()
-                                ->where('use_as_variant', false)
-                                ->with('values')->get()->map(fn ($attr) =>
-                                    Select::make('attr-' . $attr->id)
-                                        ->label($attr->name)
-                                        ->options( $attr->values()->pluck('value', 'id'))
-                                        ->searchable()
-                                )->toArray()
-                    )
+                    ->columnSpanFull()
             ]);
     }
 
