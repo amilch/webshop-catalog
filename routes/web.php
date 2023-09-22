@@ -13,9 +13,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/products', '\App\Http\Controllers\ProductController@query');
-Route::get('/categories', '\App\Http\Controllers\CategoryController@query');
-Route::get('/options', '\App\Http\Controllers\OptionController@query');
