@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')
+                ->on('products')->onDelete('cascade');
             $table->string('name');
             $table->string('sku');
             $table->decimal('price', 9,2)->nullable();
             $table->integer('weight')->nullable();
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')
-                ->on('products')->onDelete('cascade');
         });
     }
 

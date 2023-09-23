@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/categories', '\App\Http\Controllers\CategoryController@query');
-Route::get('/products', '\App\Http\Controllers\ProductController@query');
+Route::get('/categories', '\App\Http\Controllers\CategoryController@index');
+Route::get('/products', '\App\Http\Controllers\ProductController@index');
+Route::get('/products/{product}', '\App\Http\Controllers\ProductController@get');
+Route::post('/products', '\App\Http\Controllers\ProductController@store');
+Route::post('/variants', '\App\Http\Controllers\VariantController@store');
 
 Route::group(['middleware' => ['auth:api', 'can:admin']], function() {
+
 });
 

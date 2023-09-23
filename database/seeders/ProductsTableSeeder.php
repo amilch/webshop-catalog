@@ -15,7 +15,6 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             'id' => 0,
             'category_id' => 0,
-            'visible' => true,
             'name' => 'Kapuzenpullover mit Reißverschluss',
             'default_price' => '29.30',
             'default_weight' => 250
