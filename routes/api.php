@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/categories', '\App\Http\Controllers\CategoryController@index');
+Route::get('/categories', '\App\Http\Controllers\GetAllCategoriesController');
 Route::get('/products', '\App\Http\Controllers\ProductController@index');
 Route::get('/products/{product}', '\App\Http\Controllers\ProductController@get');
 Route::post('/products', '\App\Http\Controllers\ProductController@store');
-Route::post('/variants', '\App\Http\Controllers\VariantController@store');
+Route::post('/variants', '\App\Http\Controllers\CreateVariantController');
 
 Route::group(['middleware' => ['auth:api', 'can:admin']], function() {
 

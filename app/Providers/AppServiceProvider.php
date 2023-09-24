@@ -11,6 +11,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // UseCase: GetAllCategories
+        $this->app->bind(
+            \Domain\Interfaces\CategoryRepository::class,
+            \App\Repositories\CategoryDatabaseRepository::class
+        );
+
+        $this->app
+            ->when(\App\Http\Controllers\GetAllCategoriesController::class)
+            ->needs(\Domain\UseCases\GetAllCategories\GetAllCategoriesInputPort::class)
+            ->give(function ($app) {
+                return $app->make(\Domain\UseCases\GetAllCategories\GetAllCategoriesInteractor::class, [
+                    'output' => $app->make(\App\Adapters\Presenters\GetAllCategoriesJsonPresenter::class)
+                ]);
+            });
+
+        // UseCase: CreateVariant
         $this->app->bind(
             \Domain\Interfaces\VariantFactory::class,
             \App\Factories\VariantModelFactory::class
@@ -22,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app
-            ->when(\App\Http\Controllers\VariantController::class)
+            ->when(\App\Http\Controllers\CreateVariantController::class)
             ->needs(\Domain\UseCases\CreateVariant\CreateVariantInputPort::class)
             ->give(function ($app) {
                 return $app->make(\Domain\UseCases\CreateVariant\CreateVariantInteractor::class, [

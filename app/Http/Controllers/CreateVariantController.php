@@ -7,13 +7,13 @@ use App\Http\Requests\CreateVariantRequest;
 use Domain\UseCases\CreateVariant\CreateVariantInputPort;
 use Domain\UseCases\CreateVariant\CreateVariantRequestModel;
 
-class VariantController extends Controller
+class CreateVariantController extends Controller
 {
     public function __construct(
         private CreateVariantInputPort $interactor,
     ) {}
 
-    public function store(CreateVariantRequest $request)
+    public function __invoke(CreateVariantRequest $request)
     {
         $viewModel = $this->interactor->createVariant(
             new CreateVariantRequestModel($request->validated())
