@@ -19,7 +19,7 @@ return new class extends Migration
                 ->on('products')->onDelete('cascade');
             $table->string('name');
             $table->string('sku');
-            $table->decimal('price', 9,2)->nullable();
+            $table->integer('price')->nullable();
             $table->integer('weight')->nullable();
         });
     }

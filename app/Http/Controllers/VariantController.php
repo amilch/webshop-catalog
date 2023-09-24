@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateVariantAction;
-use App\Http\Requests\StoreVariantRequest;
-use App\Models\Product;
-use Symfony\Component\HttpFoundation\Response;
+use App\Adapters\ViewModels\JsonResourceViewModel;
+use App\Http\Requests\CreateVariantRequest;
+use Domain\UseCases\CreateVariant\CreateVariantInputPort;
+use Domain\UseCases\CreateVariant\CreateVariantRequestModel;
 
 class VariantController extends Controller
 {
-    public function store(StoreVariantRequest $request,
-        CreateVariantAction $createVariant)
+    public function __construct(
+        private CreateVariantInputPort $interactor,
+    ) {}
+
+    public function store(CreateVariantRequest $request)
     {
-        $variant = $createVariant->execute(
-            Product::find($request->getProductId()),
-            $request->getName(),
-            $request->getSku(),
-            $request->getPrice(),
-            $request->getWeight()
+        $viewModel = $this->interactor->createVariant(
+            new CreateVariantRequestModel($request->validated())
         );
 
-        return response()->json([
-            'data' => $variant->toData()
-        ], Response::HTTP_CREATED);
+        if ($viewModel instanceof JsonResourceViewModel) {
+            return $viewModel->getResource();
+        }
     }
 }

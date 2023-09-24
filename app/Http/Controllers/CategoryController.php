@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
+use Domain\Catalog\Models\Category;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->map->getData();
 
         return response()->json([
-            'data' => $categories->map->toData()
+            'data' => $categories
         ]);
     }
 

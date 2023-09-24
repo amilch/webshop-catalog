@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
             'id' => 0,
             'category_id' => 0,
             'name' => 'Kapuzenpullover mit Reißverschluss',
-            'default_price' => '29.30',
+            'default_price' => '2930',
             'default_weight' => 250
         ]);
 

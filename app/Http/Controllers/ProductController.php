@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateProductAction;
 use App\Http\Requests\GetProductsRequest;
-use App\Http\Requests\StoreProductRequest;
-use App\Models\Category;
-use App\Models\Product;
-use Symfony\Component\HttpFoundation\Response;
+use Domain\Catalog\Actions\UpsertProductAction;
+use Domain\Catalog\DataTransferObjects\ProductData;
+use Domain\Catalog\Models\Product;
+use Domain\Catalog\ViewModels\ProductViewModel;
 
 class ProductController extends Controller
 {
@@ -22,24 +21,16 @@ class ProductController extends Controller
 
     public function get(Product $product)
     {
+        $view = new ProductViewModel($product);
         return response()->json([
-            'data' => $product->toData()
+            'data' => $view->toArray(),
         ]);
     }
 
-    public function store(StoreProductRequest $request,
-        CreateProductAction $createProduct)
+    public function store(ProductData $data)
     {
-        $product = $createProduct->execute(
-            Category::find($request->getCategoryId()),
-            $request->getName(),
-            $request->getDefaultPrice(),
-            $request->getDefaultWeight(),
-            $request->getDescription()
-        );
+        $product = UpsertProductAction::execute($data);
 
-        return response()->json([
-            'data' => $product->toData()
-        ], Response::HTTP_CREATED);
+        return $product->getData();
     }
 }
