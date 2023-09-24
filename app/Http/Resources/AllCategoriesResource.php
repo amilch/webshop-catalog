@@ -13,7 +13,10 @@ class AllCategoriesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'data' => $this->categories,
+            'data' => array_map(fn ($category) => [
+                'id' =>  $category->id,
+                'name' =>  $category->getName(),
+            ], $this->categories),
         ];
     }
 }

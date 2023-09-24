@@ -16,15 +16,9 @@ class ProductsTableSeeder extends Seeder
             'id' => 0,
             'category_id' => 0,
             'name' => 'Kapuzenpullover mit Reißverschluss',
-            'default_price' => '2930',
-            'default_weight' => 250
-        ]);
-
-        DB::table('variants')->insert([
-            'id' => 0,
-            'name' => 'Größe S',
-            'sku' => 'kapuzenpullover_s',
-            'product_id' => 0
+            'sku' => 'kapuzenpullover',
+            'price' => 2930,
+            'weight' => 250
         ]);
     }
 }

@@ -1,5 +1,0 @@
-{
-    "require": {
-        "spatie/laravel-view-models": "^1.5"
-    }
-}

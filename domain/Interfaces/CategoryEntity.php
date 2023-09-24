@@ -4,7 +4,7 @@ namespace Domain\Interfaces;
 
 use Domain\ValueObjects\MoneyValueObject;
 
-interface VariantEntity
+interface CategoryEntity
 {
     public function getName(): string;
 }

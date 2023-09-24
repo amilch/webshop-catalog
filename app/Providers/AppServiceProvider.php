@@ -11,7 +11,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // UseCase: GetAllCategories
         $this->app->bind(
             \Domain\Interfaces\CategoryRepository::class,
             \App\Repositories\CategoryDatabaseRepository::class
@@ -26,23 +25,31 @@ class AppServiceProvider extends ServiceProvider
                 ]);
             });
 
-        // UseCase: CreateVariant
         $this->app->bind(
-            \Domain\Interfaces\VariantFactory::class,
-            \App\Factories\VariantModelFactory::class
+            \Domain\Interfaces\ProductRepository::class,
+            \App\Repositories\ProductDatabaseRepository::class
         );
 
         $this->app->bind(
-            \Domain\Interfaces\VariantRepository::class,
-            \App\Repositories\VariantDatabaseRepository::class
+            \Domain\Interfaces\ProductFactory::class,
+            \App\Factories\ProductModelFactory::class
         );
 
         $this->app
-            ->when(\App\Http\Controllers\CreateVariantController::class)
-            ->needs(\Domain\UseCases\CreateVariant\CreateVariantInputPort::class)
+            ->when(\App\Http\Controllers\CreateProductController::class)
+            ->needs(\Domain\UseCases\CreateProduct\CreateProductInputPort::class)
             ->give(function ($app) {
-                return $app->make(\Domain\UseCases\CreateVariant\CreateVariantInteractor::class, [
-                    'output' => $app->make(\App\Adapters\Presenters\CreateVariantJsonPresenter::class)
+                return $app->make(\Domain\UseCases\CreateProduct\CreateProductInteractor::class, [
+                    'output' => $app->make(\App\Adapters\Presenters\CreateProductJsonPresenter::class)
+                ]);
+            });
+
+        $this->app
+            ->when(\App\Http\Controllers\GetProductsController::class)
+            ->needs(\Domain\UseCases\GetProducts\GetProductsInputPort::class)
+            ->give(function ($app) {
+                return $app->make(\Domain\UseCases\GetProducts\GetProductsInteractor::class, [
+                    'output' => $app->make(\App\Adapters\Presenters\GetProductsJsonPresenter::class)
                 ]);
             });
     }

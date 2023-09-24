@@ -4,12 +4,27 @@ namespace Domain\ValueObjects;
 
 class MoneyValueObject
 {
-    private int $value;
+    private function __construct(private int $value) {}
 
-    public function __construct(string $value)
+    public static function fromString(string $value): self
     {
-       $split = explode('.', $value);
-       $this->value = $split[0] * 100  +  $split[1];
+        $split = explode('.', $value);
+        return new self($split[0] * 100  +  $split[1]);
+    }
+
+    public static function fromInt(int $value): self
+    {
+        return new self($value);
+    }
+
+    public function toInt(): int
+    {
+        return $this->value;
+    }
+
+    public function toString(): string
+    {
+        return (string) $this;
     }
 
     public function __toString()
