@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('sku');
             $table->string('description')->nullable();
             $table->timestamps();
-            $table->integer('price')->nullable();
-            $table->integer('weight')->nullable();
+            $table->integer('price');
+            $table->integer('weight');
         });
     }
 

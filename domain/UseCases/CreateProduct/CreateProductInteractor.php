@@ -10,6 +10,7 @@ class CreateProductInteractor implements CreateProductInputPort
 {
     public function __construct(
         private CreateProductOutputPort $output,
+        private CreateProductMessageOutputPort $messageOutput,
         private ProductRepository       $repository,
         private ProductFactory          $factory,
     ) {}
@@ -27,6 +28,11 @@ class CreateProductInteractor implements CreateProductInputPort
 
         try {
             $product = $this->repository->upsert($product);
+
+            $message = new ProductCreatedMessageModel([
+                'sku' => $product->getSku()
+            ]);
+            $this->messageOutput->productCreated($message);
         } catch (\Exception $e) {
             return $this->output->unableToCreateProduct(
                 new CreateProductResponseModel($product), $e);

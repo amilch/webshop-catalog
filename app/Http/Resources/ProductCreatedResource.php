@@ -19,7 +19,7 @@ class ProductCreatedResource extends JsonResource
             'name' => $this->product->getName(),
             'sku' => $this->product->getSku(),
             'description' => $this->product->getDescription(),
-            'price' => $this->product->getPrice()?->toString(),
+            'price' => $this->product->getPrice()->toString(),
             'weight' => $this->product->getWeight(),
         ];
     }

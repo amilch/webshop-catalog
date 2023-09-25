@@ -25,9 +25,9 @@ class CreateProductRequest extends FormRequest
             'category_id' => 'required|integer',
             'name' => 'required|string',
             'sku' => 'required|string',
-            'description' => 'string',
-            'price' => 'integer',
-            'weight' => 'integer',
+            'price' => 'required|integer',
+            'weight' => 'required|integer',
+            'description' => 'nullable|string',
         ];
     }
 }

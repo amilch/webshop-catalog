@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Adapters\ViewModels\JsonResourceViewModel;
 use Domain\UseCases\GetAllCategories\GetAllCategoriesInputPort;
+use Bschmitt\Amqp\Facades\Amqp;
 
 class GetAllCategoriesController extends Controller
 {

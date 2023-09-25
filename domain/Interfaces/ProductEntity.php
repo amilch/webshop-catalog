@@ -6,7 +6,6 @@ use Domain\ValueObjects\MoneyValueObject;
 
 interface ProductEntity
 {
-    //TODO: replace with ProductEntity
     public function getCategoryId(): int;
 
     public function getName(): string;
@@ -15,8 +14,8 @@ interface ProductEntity
 
     public function getDescription(): ?string;
 
-    public function getPrice(): ?MoneyValueObject;
+    public function getPrice(): MoneyValueObject;
 
-    public function getWeight(): ?int;
+    public function getWeight(): int;
 
 }

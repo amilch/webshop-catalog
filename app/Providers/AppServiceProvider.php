@@ -40,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
             ->needs(\Domain\UseCases\CreateProduct\CreateProductInputPort::class)
             ->give(function ($app) {
                 return $app->make(\Domain\UseCases\CreateProduct\CreateProductInteractor::class, [
-                    'output' => $app->make(\App\Adapters\Presenters\CreateProductJsonPresenter::class)
+                    'output' => $app->make(\App\Adapters\Presenters\CreateProductJsonPresenter::class),
+                    'messageOutput' => $app->make(\App\Adapters\Publishers\ProductCreatedMessagePublisher::class),
                 ]);
             });
 
@@ -52,6 +53,11 @@ class AppServiceProvider extends ServiceProvider
                     'output' => $app->make(\App\Adapters\Presenters\GetProductsJsonPresenter::class)
                 ]);
             });
+
+        $this->app->bind(
+            \Domain\Interfaces\MessageQueueService::class,
+            \App\Services\RabbitMQService::class,
+        );
     }
 
     /**

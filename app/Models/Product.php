@@ -56,14 +56,13 @@ class Product extends Model implements HasMedia, ProductEntity
         return $this->attributes['description'] ?? null;
     }
 
-    public function getPrice(): ?MoneyValueObject
+    public function getPrice(): MoneyValueObject
     {
-        return $this->attributes['price'] ?
-            MoneyValueObject::fromInt($this->attributes['price']) : null;
+        return MoneyValueObject::fromInt($this->attributes['price']);
     }
 
-    public function getWeight(): ?int
+    public function getWeight(): int
     {
-        return $this->attributes['weight'] ?? null;
+        return $this->attributes['weight'];
     }
 }

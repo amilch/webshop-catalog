@@ -27,18 +27,18 @@ class CreateProductRequestModel
         return $this->attributes['sku'];
     }
 
+    public function getPrice(): int
+    {
+        return $this->attributes['price'];
+    }
+
+    public function getWeight(): int
+    {
+        return $this->attributes['weight'];
+    }
+
     public function getDescription(): ?string
     {
         return $this->attributes['description'] ?? null;
-    }
-
-    public function getPrice(): ?int
-    {
-        return $this->attributes['price'] ?? null;
-    }
-
-    public function getWeight(): ?int
-    {
-        return $this->attributes['weight'] ?? null;
     }
 }
