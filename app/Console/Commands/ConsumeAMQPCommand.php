@@ -18,6 +18,8 @@ class ConsumeAMQPCommand extends Command
 
     protected $description = 'AMQP consumer';
 
+    private $should_keep_running = true;
+
     public function __construct(
         private UpdateStockInputPort $interactor,
     ) {
@@ -26,29 +28,30 @@ class ConsumeAMQPCommand extends Command
 
     public function handle()
     {
+        $this->trap(15, fn () => $this->should_keep_running = false);
         var_dump('Listening for messages...');
 
-        while(true) {
-            Amqp::consume('catalog_inventory_updated',
-                function (AMQPMessage $message, Consumer $resolver) {
-                    try{
-                        $payload = json_decode($message->getBody(), true);
-                        var_dump('Message received', $payload);
+        Amqp::consume('catalog_inventory_updated',
+            function (AMQPMessage $message, Consumer $resolver) {
+                try{
+                    $payload = json_decode($message->getBody(), true);
+                    var_dump('Message received', $payload);
 
-                        $this->interactor->updateStock(
-                            new UpdateStockRequestModel($payload)
-                        );
+                    $this->interactor->updateStock(
+                        new UpdateStockRequestModel($payload)
+                    );
 
-                        $resolver->acknowledge($message);
-                    } catch (Exception $e) {
-                        var_dump('Error processing message');
-                        var_dump($e->getMessage());
-                        $resolver->reject($message);
-                    }
-                },[
-                    'routing_key' => 'inventory_updated'
-                ]);
-            sleep(10);
-        }
+                    $resolver->acknowledge($message);
+                } catch (Exception $e) {
+                    var_dump('Error processing message');
+                    var_dump($e->getMessage());
+                    $resolver->reject($message);
+                }
+            },[
+                'routing' => 'inventory_updated',
+                'persistent' => true,
+            ]);
+
+        while($this->should_keep_running) {}
     }
 }
