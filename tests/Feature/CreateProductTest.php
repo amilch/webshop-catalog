@@ -4,9 +4,6 @@ namespace Tests\Feature;
 
 use App\Services\RabbitMQService;
 use Bschmitt\Amqp\Facades\Amqp;
-use Domain\Interfaces\Message;
-use Domain\Interfaces\MessageQueueService;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Mockery\MockInterface;
@@ -16,11 +13,6 @@ class CreateProductTest extends TestCase
 {
     use RefreshDatabase;
     protected $seed = true;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
 
     public function test_can_create_product(): void
     {
