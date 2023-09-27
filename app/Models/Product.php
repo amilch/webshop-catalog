@@ -22,6 +22,7 @@ class Product extends Model implements HasMedia, ProductEntity
         'description',
         'price',
         'weight',
+        'in_stock',
     ];
 
     protected $casts = [
@@ -64,5 +65,16 @@ class Product extends Model implements HasMedia, ProductEntity
     public function getWeight(): int
     {
         return $this->attributes['weight'];
+    }
+
+    public function getInStock(): bool
+    {
+        return $this->attributes['in_stock'];
+    }
+
+    public function setInStock(bool $in_stock): void
+    {
+        $this->attributes['in_stock'] = $in_stock;
+        $this->save();
     }
 }

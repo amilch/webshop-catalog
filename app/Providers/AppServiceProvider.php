@@ -35,6 +35,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Factories\ProductModelFactory::class
         );
 
+        $this->app->bind(
+            \Domain\Interfaces\MessageQueueService::class,
+            \App\Services\RabbitMQService::class,
+        );
+
         $this->app
             ->when(\App\Http\Controllers\CreateProductController::class)
             ->needs(\Domain\UseCases\CreateProduct\CreateProductInputPort::class)
@@ -54,10 +59,13 @@ class AppServiceProvider extends ServiceProvider
                 ]);
             });
 
-        $this->app->bind(
-            \Domain\Interfaces\MessageQueueService::class,
-            \App\Services\RabbitMQService::class,
-        );
+        $this->app
+            ->when(\App\Console\Commands\ConsumeAMQPCommand::class)
+            ->needs(\Domain\UseCases\UpdateStock\UpdateStockInputPort::class)
+            ->give(function ($app) {
+                return $app->make(\Domain\UseCases\UpdateStock\UpdateStockInteractor::class, []);
+            });
+
     }
 
     /**

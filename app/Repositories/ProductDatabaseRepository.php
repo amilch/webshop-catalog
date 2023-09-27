@@ -20,6 +20,7 @@ class ProductDatabaseRepository implements ProductRepository
             'description' => $product->getDescription(),
             'price' => $product->getPrice()->toInt(),
             'weight' => $product->getWeight(),
+            'in_stock' => $product->getInStock(),
         ]);
     }
 

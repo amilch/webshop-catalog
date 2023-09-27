@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('price');
             $table->integer('weight');
+            $table->boolean('in_stock');
         });
     }
 
