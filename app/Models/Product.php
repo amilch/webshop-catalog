@@ -21,7 +21,6 @@ class Product extends Model implements HasMedia, ProductEntity
         'sku',
         'description',
         'price',
-        'weight',
         'in_stock',
     ];
 
@@ -60,11 +59,6 @@ class Product extends Model implements HasMedia, ProductEntity
     public function getPrice(): MoneyValueObject
     {
         return MoneyValueObject::fromInt($this->attributes['price']);
-    }
-
-    public function getWeight(): int
-    {
-        return $this->attributes['weight'];
     }
 
     public function getInStock(): bool

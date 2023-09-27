@@ -17,11 +17,10 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')
                 ->on('categories')->onDelete('cascade');
             $table->string('name');
-            $table->string('sku');
+            $table->string('sku')->unique();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->integer('price');
-            $table->integer('weight');
             $table->boolean('in_stock');
         });
     }

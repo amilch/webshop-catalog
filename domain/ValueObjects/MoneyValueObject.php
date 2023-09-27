@@ -8,7 +8,7 @@ class MoneyValueObject
 
     public static function fromString(string $value): self
     {
-        $split = explode('.', $value);
+        $split = explode(',', $value);
         return new self($split[0] * 100  +  $split[1]);
     }
 

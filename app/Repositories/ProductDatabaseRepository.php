@@ -19,7 +19,6 @@ class ProductDatabaseRepository implements ProductRepository
             'sku' => $product->getSku(),
             'description' => $product->getDescription(),
             'price' => $product->getPrice()->toInt(),
-            'weight' => $product->getWeight(),
             'in_stock' => $product->getInStock(),
         ]);
     }

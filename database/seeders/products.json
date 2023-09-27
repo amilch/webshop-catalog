@@ -1,0 +1,162 @@
+[
+    {
+        "category": "Gemüsesamen",
+        "name": "Kirsch-Tomaten Samen",
+        "sku": "kirsch_tomaten_samen",
+        "price": "2,49",
+        "description": "Züchten Sie Ihre eigenen süßen und saftigen Kirschtomaten mit diesen hochwertigen Samen. Perfekt für Salate, Snacks und frische Garten-Tisch-Gerichte.",
+        "in_stock": true
+    },
+    {
+        "category": "Kräutersamen",
+        "name": "Basilikum Samen",
+        "sku": "basilikum_samen",
+        "price": "1,69",
+        "description": "Verleihen Sie Ihren kulinarischen Kreationen mit dem aromatischen Geschmack von frischem Basilikum das gewisse Etwas. Diese Samen ergeben duftende Basilikumblätter, ideal für Pasta, Pesto und mehr.",
+        "in_stock": true
+    },
+    {
+        "category": "Obstsamen",
+        "name": "Erdbeeren Samen",
+        "sku": "erdbeeren_samen",
+        "price": "2,99",
+        "description": "Genießen Sie hausangebaute Erdbeeren voller Süße. Pflanzen Sie diese Samen für eine reichhaltige Ernte von prallen und köstlichen Beeren.",
+        "in_stock": false
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Grüne Bohnen Samen",
+        "sku": "gruene_bohnen_samen",
+        "price": "1,99",
+        "description": "Diese grünen Bohnensamen ergeben zarte und knackige Bohnen, die sich perfekt für Pfannengerichte, Aufläufe und Beilagen eignen.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Karotten Samen",
+        "sku": "karotten_samen",
+        "price": "1,49",
+        "description": "Züchten Sie Ihre eigenen Karotten mit diesen Samen und genießen Sie den erdigen, süßen Geschmack von hausangebauten Karotten in Salaten, Suppen und Snacks.",
+        "in_stock": false
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Gurken Samen",
+        "sku": "gurken_samen",
+        "price": "2,09",
+        "description": "Knackige und erfrischende Gurken sind nur wenige Wochen entfernt, wenn Sie diese Samen pflanzen. Schneiden Sie sie für Salate oder legen Sie sie ein, um einen köstlichen Snack zu erhalten.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Süße Paprika Samen",
+        "sku": "suesse_paprika_samen",
+        "price": "2,29",
+        "description": "Verleihen Sie Ihren Gerichten Farbe und Geschmack mit hausangebauten süßen Paprikaschoten. Diese Samen ergeben Paprikaschoten, die sich perfekt zum Füllen, Grillen oder Snacken eignen.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Spinat Samen",
+        "sku": "spinat_samen",
+        "price": "1,39",
+        "description": "Züchten Sie Ihren eigenen nahrhaften Spinat für Salate, Smoothies und Pfannengerichte. Diese Samen ergeben lebendige, grüne Blätter voller Vitamine.",
+        "in_stock": true
+    },
+    {
+        "category": "Obstsamen",
+        "name": "Wassermelonen Samen",
+        "sku": "wassermelonen_samen",
+        "price": "3,49",
+        "description": "Genießen Sie die Süße des Sommers mit hausangebauten Wassermelonen. Pflanzen Sie diese Samen für saftige und erfrischende Wassermelonen für Picknicks und Desserts.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Zucchinisamen",
+        "sku": "zucchini_samen",
+        "price": "1,89",
+        "description": "Züchten Sie Ihre eigenen Zucchinis und genießen Sie deren Vielseitigkeit in Gerichten wie Pfannengerichten, Grillen und Zucchinibrot.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Rote Beete Samen",
+        "sku": "rote_beete_samen",
+        "price": "1,69",
+        "description": "Diese Samen ergeben saftige, erdige Rote Beeten, die sich hervorragend für Salate, Suppen und Beilagen eignen.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Brokkoli Samen",
+        "sku": "brokkoli_samen",
+        "price": "1,99",
+        "description": "Züchten Sie frischen, knackigen Brokkoli für gesunde Beilagen und Gemüsegerichte. Diese Samen ergeben köstlichen Brokkoli voller Nährstoffe.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Paprika Samen",
+        "sku": "paprika_samen",
+        "price": "2,19",
+        "description": "Diese Samen ergeben aromatische Paprikaschoten in verschiedenen Farben. Ideal zum Grillen, Füllen oder für frische Paprikasalate.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Radieschen Samen",
+        "sku": "radieschen_samen",
+        "price": "1,19",
+        "description": "Züchten Sie knackige Radieschen für Salate und Snacks. Diese Samen ergeben scharfe und erfrischende Radieschen.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Mais Samen",
+        "sku": "mais_samen",
+        "price": "2,49",
+        "description": "Züchten Sie saftigen Mais für köstliche Maiskolben und Maisgerichte. Diese Samen ergeben süßen und knackigen Mais.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Kürbis Samen",
+        "sku": "kuerbis_samen",
+        "price": "2,29",
+        "description": "Züchten Sie Ihre eigenen Kürbisse für Suppen, Kürbispüree und Desserts. Diese Samen ergeben aromatische und vielseitige Kürbisse.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Rucola Samen",
+        "sku": "rucola_samen",
+        "price": "1,49",
+        "description": "Züchten Sie Ihren eigenen frischen Rucola für Salate und Sandwiches. Diese Samen ergeben würzigen und knackigen Rucola.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Artischocken Samen",
+        "sku": "artischocken_samen",
+        "price": "2,59",
+        "description": "Züchten Sie herzhafte Artischocken für köstliche Vorspeisen und Beilagen. Diese Samen ergeben zarte Artischockenherzen.",
+        "in_stock": true
+    },
+    {
+        "category": "Gemüsesamen",
+        "name": "Erdnuss Samen",
+        "sku": "erdnuss_samen",
+        "price": "3,49",
+        "description": "Züchten Sie Ihre eigenen Erdnüsse für gesunde Snacks und Erdnussbutter. Diese Samen ergeben knackige Erdnüsse.",
+        "in_stock": true
+    },
+    {
+        "category": "Obstsamen",
+        "name": "Kirschkern Samen",
+        "sku": "kirschkern_samen",
+        "price": "2,29",
+        "description": "Züchten Sie köstliche Kirschen aus Kirschsteinen. Diese Samen ergeben saftige und süße Kirschen, ideal zum Naschen und Backen.",
+        "in_stock": true
+    }
+]

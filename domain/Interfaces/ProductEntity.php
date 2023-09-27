@@ -16,8 +16,6 @@ interface ProductEntity
 
     public function getPrice(): MoneyValueObject;
 
-    public function getWeight(): int;
-
     public function getInStock(): bool;
 
     public function setInStock(bool $in_stock): void;

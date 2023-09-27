@@ -23,7 +23,6 @@ class CreateProductInteractor implements CreateProductInputPort
             'sku' => $request->getSku(),
             'description' => $request->getDescription(),
             'price' => $request->getPrice(),
-            'weight' => $request->getWeight(),
             'in_stock' => false,
         ]);
 

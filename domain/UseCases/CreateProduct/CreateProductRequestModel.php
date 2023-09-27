@@ -32,11 +32,6 @@ class CreateProductRequestModel
         return $this->attributes['price'];
     }
 
-    public function getWeight(): int
-    {
-        return $this->attributes['weight'];
-    }
-
     public function getDescription(): ?string
     {
         return $this->attributes['description'] ?? null;

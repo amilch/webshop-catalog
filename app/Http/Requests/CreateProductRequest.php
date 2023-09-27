@@ -26,7 +26,6 @@ class CreateProductRequest extends FormRequest
             'name' => 'required|string',
             'sku' => 'required|string',
             'price' => 'required|integer',
-            'weight' => 'required|integer',
             'description' => 'nullable|string',
         ];
     }
