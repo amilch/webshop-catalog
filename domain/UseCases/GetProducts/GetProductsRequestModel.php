@@ -22,4 +22,10 @@ class GetProductsRequestModel
         return $this->attributes['category_id'] ?? null;
     }
 
+    public function getSku(): ?array
+    {
+        $sku = $this->attributes['sku'] ?? null;
+        return $sku != null ? explode(',', $sku) : null;
+    }
+
 }

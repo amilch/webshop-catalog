@@ -23,7 +23,7 @@ class ProductDatabaseRepository implements ProductRepository
         ]);
     }
 
-    public function all(?int $id = null, ?int $category_id = null,): array
+    public function all(?int $id = null, ?int $category_id = null, ?array $sku = null): array
     {
         $builder = Product::query();
 
@@ -35,6 +35,11 @@ class ProductDatabaseRepository implements ProductRepository
         if ($category_id !== null)
         {
             $builder = $builder->where('category_id', $category_id);
+        }
+
+        if ($sku !== null)
+        {
+            $builder = $builder->whereIn('sku', $sku);
         }
 
         return $builder->get()->all();

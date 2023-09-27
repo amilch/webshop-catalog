@@ -24,6 +24,7 @@ class GetProductsRequest extends FormRequest
         return [
             'id' => 'integer',
             'category_id' => 'integer',
+            'sku' => 'string',
         ];
     }
 }

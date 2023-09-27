@@ -17,6 +17,7 @@ class GetProductsInteractor implements GetProductsInputPort
         $products = $this->repository->all(
             id: $request->getId(),
             category_id: $request->getCategoryId(),
+            sku: $request->getSku(),
         );
 
         return $this->output->products(
