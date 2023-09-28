@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Services\RabbitMQService;
+use App\Services\AMQPService;
 use Bschmitt\Amqp\Facades\Amqp;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,7 +22,7 @@ class CreateProductTest extends TestCase
 
     public function test_can_create_product(): void
     {
-        $this->mock(RabbitMQService::class, fn (MockInterface $mock) => $mock
+        $this->mock(AMQPService::class, fn (MockInterface $mock) => $mock
             ->shouldReceive('publish')->once()
         );
         $response = $this->postJson('/products',[

@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Category;
-use Domain\Interfaces\CategoryRepository;
+use Domain\Entities\Category\CategoryRepository;
 
 class CategoryDatabaseRepository implements CategoryRepository
 {

@@ -2,7 +2,7 @@
 
 namespace Domain\UseCases\GetProducts;
 
-use Domain\Interfaces\ProductRepository;
+use Domain\Entities\Product\ProductRepository;
 use Domain\Interfaces\ViewModel;
 
 class GetProductsInteractor implements GetProductsInputPort

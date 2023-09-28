@@ -2,17 +2,21 @@
 
 namespace Domain\UseCases\CreateProduct;
 
-use Domain\Interfaces\ProductFactory;
-use Domain\Interfaces\ProductRepository;
+use Domain\Entities\Product\ProductFactory;
+use Domain\Entities\Product\ProductRepository;
+use Domain\Events\EventService;
+use Domain\Events\ProductCreated\ProductCreatedEvent;
+use Domain\Events\ProductCreated\ProductCreatedEventFactory;
 use Domain\Interfaces\ViewModel;
 
 class CreateProductInteractor implements CreateProductInputPort
 {
     public function __construct(
         private CreateProductOutputPort $output,
-        private CreateProductMessageOutputPort $messageOutput,
         private ProductRepository       $repository,
         private ProductFactory          $factory,
+        private EventService            $eventService,
+        private ProductCreatedEventFactory $eventFactory,
     ) {}
 
     public function createProduct(CreateProductRequestModel $request): ViewModel
@@ -29,10 +33,8 @@ class CreateProductInteractor implements CreateProductInputPort
         try {
             $product = $this->repository->upsert($product);
 
-            $message = new ProductCreatedMessageModel([
-                'sku' => $product->getSku()
-            ]);
-            $this->messageOutput->productCreated($message);
+            $event = $this->eventFactory->make($product->getSku());
+            $this->eventService->publish($event);
         } catch (\Exception $e) {
             return $this->output->unableToCreateProduct(
                 new CreateProductResponseModel($product), $e);

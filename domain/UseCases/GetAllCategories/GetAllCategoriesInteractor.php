@@ -2,7 +2,7 @@
 
 namespace Domain\UseCases\GetAllCategories;
 
-use Domain\Interfaces\CategoryRepository;
+use Domain\Entities\Category\CategoryRepository;
 use Domain\Interfaces\ViewModel;
 
 class GetAllCategoriesInteractor implements GetAllCategoriesInputPort

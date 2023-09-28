@@ -2,9 +2,7 @@
 
 namespace Domain\UseCases\UpdateStock;
 
-use Domain\Interfaces\ProductFactory;
-use Domain\Interfaces\ProductRepository;
-use Domain\Interfaces\ViewModel;
+use Domain\Entities\Product\ProductRepository;
 
 class UpdateStockInteractor implements UpdateStockInputPort
 {

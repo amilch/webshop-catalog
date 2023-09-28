@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \Domain\Interfaces\CategoryRepository::class,
+            \Domain\Entities\Category\CategoryRepository::class,
             \App\Repositories\CategoryDatabaseRepository::class
         );
 
@@ -26,18 +26,23 @@ class AppServiceProvider extends ServiceProvider
             });
 
         $this->app->bind(
-            \Domain\Interfaces\ProductRepository::class,
+            \Domain\Entities\Product\ProductRepository::class,
             \App\Repositories\ProductDatabaseRepository::class
         );
 
         $this->app->bind(
-            \Domain\Interfaces\ProductFactory::class,
+            \Domain\Entities\Product\ProductFactory::class,
             \App\Factories\ProductModelFactory::class
         );
 
         $this->app->bind(
-            \Domain\Interfaces\MessageQueueService::class,
-            \App\Services\RabbitMQService::class,
+            \Domain\Events\EventService::class,
+            \App\Services\AMQPService::class,
+        );
+
+        $this->app->bind(
+            \Domain\Events\ProductCreated\ProductCreatedEventFactory::class,
+            \App\Factories\ProductCreatedAMQPEventFactory::class,
         );
 
         $this->app
@@ -46,7 +51,6 @@ class AppServiceProvider extends ServiceProvider
             ->give(function ($app) {
                 return $app->make(\Domain\UseCases\CreateProduct\CreateProductInteractor::class, [
                     'output' => $app->make(\App\Adapters\Presenters\CreateProductJsonPresenter::class),
-                    'messageOutput' => $app->make(\App\Adapters\Publishers\ProductCreatedMessagePublisher::class),
                 ]);
             });
 

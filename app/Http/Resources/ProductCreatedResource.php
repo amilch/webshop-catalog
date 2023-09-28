@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use Domain\Interfaces\ProductEntity;
+use Domain\Entities\Product\ProductEntity;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductCreatedResource extends JsonResource

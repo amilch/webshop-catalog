@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Product;
-use Domain\Interfaces\ProductEntity;
-use Domain\Interfaces\ProductRepository;
+use Domain\Entities\Product\ProductEntity;
+use Domain\Entities\Product\ProductRepository;
 
 class ProductDatabaseRepository implements ProductRepository
 {

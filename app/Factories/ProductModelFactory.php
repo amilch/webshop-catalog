@@ -4,8 +4,8 @@ namespace App\Factories;
 
 use App\Models\Category;
 use App\Models\Product;
-use Domain\Interfaces\ProductEntity;
-use Domain\Interfaces\ProductFactory;
+use Domain\Entities\Product\ProductEntity;
+use Domain\Entities\Product\ProductFactory;
 
 class ProductModelFactory implements ProductFactory
 {

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Domain\Interfaces\CategoryEntity;
+use Domain\Entities\Category\CategoryEntity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
